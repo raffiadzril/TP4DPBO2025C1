@@ -140,11 +140,14 @@ public class Menu extends JFrame{
                 namaField.setText(selectedNama);
                 jenisKelaminComboBox.setSelectedItem(selectedJenisKelamin);
                 // pilih radio button yang sesuai dengan selectedKelas
-                for (JRadioButton rb : kelasRadioButton) {
-                    if (rb.getText().equals(selectedKelas)) {
-                        rb.setSelected(true);
-                        break;
+                int i = 0;
+                boolean found = false;
+                while (i < kelasRadioButton.length && !found) {
+                    if (kelasRadioButton[i].getText().equals(selectedKelas)) {
+                        kelasRadioButton[i].setSelected(true);
+                        found = true;
                     }
+                    i++;
                 }
 
 
@@ -186,12 +189,15 @@ public class Menu extends JFrame{
         String nama = namaField.getText();
         String jenisKelamin = jenisKelaminComboBox.getSelectedItem().toString();
         String kelas = "";
-        for (JRadioButton rb : kelasRadioButton) {
-            if (rb.isSelected()) {
-                kelas = rb.getText();
-                break;
-            }
+        int i = 0;
+        while (i < kelasRadioButton.length && !kelasRadioButton[i].isSelected()) {
+            i++;
         }
+
+        if (i < kelasRadioButton.length) {
+            kelas = kelasRadioButton[i].getText();
+        }
+
 
 
         // tambahkan data ke dalam list
@@ -215,12 +221,15 @@ public class Menu extends JFrame{
         String nama = namaField.getText();
         String jenisKelamin = jenisKelaminComboBox.getSelectedItem().toString();
         String kelas = "";
-        for (JRadioButton rb : kelasRadioButton) {
-            if (rb.isSelected()) {
-                kelas = rb.getText();
-                break;
-            }
+        int i = 0;
+        while (i < kelasRadioButton.length && !kelasRadioButton[i].isSelected()) {
+            i++;
         }
+
+        if (i < kelasRadioButton.length) {
+            kelas = kelasRadioButton[i].getText();
+        }
+
 
         // ubah data mahasiswa di list
         listMahasiswa.get(selectedIndex).setNim(nim);
